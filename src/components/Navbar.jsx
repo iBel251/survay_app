@@ -15,7 +15,7 @@ import { useState } from "react";
 function Navbar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const handleDrawer = () => {
-    setIsDrawerOpen(true);
+    setIsDrawerOpen(!isDrawerOpen);
   };
   const styles = {
     navBtn: {
@@ -76,17 +76,36 @@ function Navbar() {
           </Typography>
           <Stack direction={"row"} spacing={1}>
             <Box sx={styles.navBtnDesktop}>
-              <Button sx={styles.navBtn}>ABOUT US</Button>
-              <Button sx={styles.navBtn}>FEATURES</Button>
-              <Button sx={styles.navBtn}>SERVICES</Button>
-              <Button sx={styles.navBtn}>HOW IT WORKS</Button>
-              <Button sx={styles.navBtn}>BLOG</Button>
-              <Button sx={styles.navBtn}>HELP</Button>
+              <Button href="/about" sx={styles.navBtn}>
+                ABOUT US
+              </Button>
+              <Button href="/features" sx={styles.navBtn}>
+                FEATURES
+              </Button>
+              <Button href="services" sx={styles.navBtn}>
+                SERVICES
+              </Button>
+              <Button href="howitworks" sx={styles.navBtn}>
+                HOW IT WORKS
+              </Button>
+              <Button href="blog" sx={styles.navBtn}>
+                BLOG
+              </Button>
+              <Button href="help" sx={styles.navBtn}>
+                HELP
+              </Button>
             </Box>
-            <Button variant="outlined" color="primary">
+            <Button
+              href="signup"
+              sx={{
+                "&:hover": { backgroundColor: "primary.main", color: "white" },
+              }}
+              variant="outlined"
+              color="primary"
+            >
               Sign up
             </Button>
-            <Button variant="contained" color="primary">
+            <Button href="donate" variant="contained" color="primary">
               Donate
             </Button>
           </Stack>
