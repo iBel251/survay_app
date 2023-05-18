@@ -44,7 +44,9 @@ function Signup() {
             <Button href="register" variant="contained">
               Create an account
             </Button>
-            <Button variant="outlined">Sign in</Button>
+            <Button href="login" variant="outlined">
+              Sign in
+            </Button>
           </Stack>
           <Typography mb={2} mt={4}>
             Most people use our global KoboToolbox server. It is free for all to

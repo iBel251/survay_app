@@ -1,0 +1,64 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Full Name",
+      "type": "text",
+      "other": []
+    },
+    {
+      "id": 2,
+      "question": "Age",
+      "type": "text",
+      "other": []
+    },
+    {
+      "type": "text",
+      "question": "Country",
+      "other": [],
+      "id": 3
+    },
+    {
+      "type": "selectone",
+      "question": "Gender",
+      "other": [
+        "Male",
+        "Female"
+      ],
+      "id": 4
+    },
+    {
+      "type": "text",
+      "question": "Salary($)",
+      "other": [],
+      "id": 5
+    },
+    {
+      "type": "text",
+      "question": "Marriage status",
+      "other": [],
+      "id": 6
+    },
+    {
+      "type": "selectmany",
+      "question": "Nationality",
+      "other": [],
+      "id": 7
+    },
+    {
+      "type": "selectone",
+      "question": "type",
+      "other": [
+        "one",
+        "two"
+      ],
+      "id": 8
+    },
+    {
+      "type": "selectmany",
+      "question": "dsfs",
+      "other": [],
+      "id": 9
+    }
+  ]
+}

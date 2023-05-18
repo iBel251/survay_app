@@ -14,27 +14,39 @@ import Footer from "./components/Footer";
 import { ThemeProvider } from "@mui/system";
 import customTheme from "./themes/customTheme";
 import Register from "./components/pages/loginSignup/Register";
-import { useLocation } from "react-router-dom";
+import { UserAuthContextProvider } from "./context/UserAuthContext";
+import Login from "./components/pages/loginSignup/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Dashboard from "./components/pages/dashboard/Dashboard";
+import AddQuestions from "./components/pages/dashboard/AddQuestions";
+import DashboardHome from "./components/pages/dashboard/DashboardHome";
 
 function App() {
-  const excludedRoutes = ["/register"];
+  const excludedRoutes = ["/register", "/", "/dashboard"];
   return (
     <ThemeProvider theme={customTheme}>
       <Container disableGutters maxWidth={false}>
         <BrowserRouter>
           {!excludedRoutes.includes(window.location.pathname) && <Navbar />}
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="about" element={<AboutUs />} />
-            <Route path="features" element={<Features />} />
-            <Route path="services" element={<Services />} />
-            <Route path="howitworks" element={<HowItWorks />} />
-            <Route path="blog" element={<Blog />} />
-            <Route path="help" element={<Help />} />
-            <Route path="signup" element={<Signup />} />
-            <Route path="donate" element={<Donate />} />
-            <Route path="register" element={<Register />} />
-          </Routes>
+          <UserAuthContextProvider>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="about" element={<AboutUs />} />
+              <Route path="features" element={<Features />} />
+              <Route path="services" element={<Services />} />
+              <Route path="howitworks" element={<HowItWorks />} />
+              <Route path="blog" element={<Blog />} />
+              <Route path="help" element={<Help />} />
+              <Route path="signup" element={<Signup />} />
+              <Route path="donate" element={<Donate />} />
+              <Route path="register" element={<Register />} />
+              <Route path="login" element={<Login />} />
+              <Route path="dashboard" element={<Dashboard />}>
+                <Route index element={<DashboardHome />} />
+                <Route path="add" element={<AddQuestions />} />
+              </Route>
+            </Routes>
+          </UserAuthContextProvider>
           {/* <Footer /> */}
         </BrowserRouter>
       </Container>

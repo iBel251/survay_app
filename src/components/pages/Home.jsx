@@ -1,14 +1,18 @@
 import { Button, Typography, Stack, Box } from "@mui/material";
+import Navbar from "../Navbar";
 import commonStyles from "../styles/commonStyles";
 
-function Home() {
+const Home = () => {
   return (
-    <Box sx={commonStyles.rootContainer}>
-      <Stack>
-        <Typography>Home page</Typography>
-      </Stack>
-    </Box>
+    <>
+      <Navbar />
+      <Box sx={commonStyles.rootContainer}>
+        <Stack>
+          <Typography>Home page</Typography>
+        </Stack>
+      </Box>
+    </>
   );
-}
+};
 
 export default Home;

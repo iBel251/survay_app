@@ -12,16 +12,14 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import { Input } from "@mui/icons-material";
-import FormHelperText from "@mui/material/FormHelperText";
 import TextField from "@mui/material/TextField/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel/FormControlLabel";
-import RadioGroup from "@mui/material/RadioGroup/RadioGroup";
-import Radio from "@mui/material/Radio/Radio";
-import FormLabel from "@mui/material/FormLabel/FormLabel";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useUserAuth } from "../../../context/UserAuthContext";
 
 function Register() {
+  const navigate = useNavigate();
+  const { signup } = useUserAuth();
   const [gender, setGender] = useState("");
   const [inputs, setInputs] = useState({
     fullname: "",
@@ -43,10 +41,14 @@ function Register() {
     setGender(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputs);
-    console.log(gender);
+    try {
+      await signup(inputs.email, inputs.pwd);
+      navigate("/");
+    } catch (err) {
+      console.log(err.message);
+    }
   };
   const styles = {
     navBtn: {
@@ -96,7 +98,7 @@ function Register() {
             <Button variant="outlined" href="/" sx={styles.navBtn}>
               Home
             </Button>
-            <Button variant="contained" href="#" sx={styles.navBtn}>
+            <Button variant="contained" href="login" sx={styles.navBtn}>
               Login
             </Button>
           </Stack>
@@ -201,6 +203,7 @@ function Register() {
                     value={gender}
                     label="gender"
                     onChange={handleGender}
+                    sx={styles.inputField}
                   >
                     <MenuItem value={"male"}>Male</MenuItem>
                     <MenuItem value={"female"}>Female</MenuItem>
